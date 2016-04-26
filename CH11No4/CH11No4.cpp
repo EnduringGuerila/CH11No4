@@ -19,6 +19,9 @@ void GenerateOutput(string AlphabetArray[], string inputStr);
 string ConvertLetter(string AlphabetArray[], char inCH);
 bool Continue();
 
+struct UberStructure {
+	string AlphabetArray[26];
+};
 
 int main()
 {
@@ -41,7 +44,6 @@ int main()
 		cont = Continue();
 	} while (cont); // main loop
 
-	system("pause"); //pause
     return 0;
 }
 

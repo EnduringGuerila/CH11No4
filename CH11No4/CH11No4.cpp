@@ -13,14 +13,16 @@
 using namespace std;
 
 // Function prototypes
-void InitializeArray(string AlphabetArray[]);
+void InitializeArray(string AlphaAr[]);
 void GetInput(string& inData);
 void GenerateOutput(string AlphabetArray[], string inputStr);
 string ConvertLetter(string AlphabetArray[], char inCH);
 bool Continue();
 
 struct UberStructure {
+	//const int arraySize = 26;
 	string AlphabetArray[26];
+	string inputStr;
 };
 
 int main()
@@ -31,53 +33,51 @@ int main()
 	cout << "     *                                                                   *" << endl;
 	cout << "     *********************************************************************" << endl << endl;
 
-	string AlphabetArray[26];
+	UberStructure Uber;
+
 	bool cont = false;
 
-	InitializeArray(AlphabetArray);
+	InitializeArray(Uber.AlphabetArray);
 
 	do {
-		string inputStr;
-		GetInput(inputStr);
-		GenerateOutput(AlphabetArray, inputStr);
-
-		cont = Continue();
-	} while (cont); // main loop
+		GetInput(Uber.inputStr);
+		GenerateOutput(Uber.AlphabetArray, Uber.inputStr);
+	} while (Continue()); // main loop
 
     return 0;
 }
 
 
-void InitializeArray(string AlphabetArray[])
+void InitializeArray(string AlphaAr[])
 // Pre:  AlphabetArray defined as type string
 // Post: indexes 0-25 set to string of ICAO
 {
-	AlphabetArray[0] = "Alpha"; // starting at 65 instead of 0 would have been fine too, wouldnt have to subtract 'A' aka 65 later
-	AlphabetArray[1] = "Bravo";
-	AlphabetArray[2] = "Charlie";
-	AlphabetArray[3] = "Delta";
-	AlphabetArray[4] = "Echo";
-	AlphabetArray[5] = "Foxtrot";
-	AlphabetArray[6] = "Golf";
-	AlphabetArray[7] = "Hotel";
-	AlphabetArray[8] = "India";
-	AlphabetArray[9] = "Juliet";
-	AlphabetArray[10] = "Kilo";
-	AlphabetArray[11] = "Lima";
-	AlphabetArray[12] = "Mike";
-	AlphabetArray[13] = "November";
-	AlphabetArray[14] = "Oscar";
-	AlphabetArray[15] = "Papa";
-	AlphabetArray[16] = "Quebec";
-	AlphabetArray[17] = "Romeo";
-	AlphabetArray[18] = "Sierra";
-	AlphabetArray[19] = "Tango";
-	AlphabetArray[20] = "Uniform";
-	AlphabetArray[21] = "Victor";
-	AlphabetArray[22] = "Whiskey";
-	AlphabetArray[23] = "X-ray";
-	AlphabetArray[24] = "Yankee";
-	AlphabetArray[25] = "Zulu";
+	AlphaAr[0] = "Alpha"; // starting at 65 instead of 0 would have been fine too, wouldnt have to subtract 'A' aka 65 later
+	AlphaAr[1] = "Bravo";
+	AlphaAr[2] = "Charlie";
+	AlphaAr[3] = "Delta";
+	AlphaAr[4] = "Echo";
+	AlphaAr[5] = "Foxtrot";
+	AlphaAr[6] = "Golf";
+	AlphaAr[7] = "Hotel";
+	AlphaAr[8] = "India";
+	AlphaAr[9] = "Juliet";
+	AlphaAr[10] = "Kilo";
+	AlphaAr[11] = "Lima";
+	AlphaAr[12] = "Mike";
+	AlphaAr[13] = "November";
+	AlphaAr[14] = "Oscar";
+	AlphaAr[15] = "Papa";
+	AlphaAr[16] = "Quebec";
+	AlphaAr[17] = "Romeo";
+	AlphaAr[18] = "Sierra";
+	AlphaAr[19] = "Tango";
+	AlphaAr[20] = "Uniform";
+	AlphaAr[21] = "Victor";
+	AlphaAr[22] = "Whiskey";
+	AlphaAr[23] = "X-ray";
+	AlphaAr[24] = "Yankee";
+	AlphaAr[25] = "Zulu";
 	return;
 }
 
@@ -88,7 +88,7 @@ void GetInput(string& inData)
 {
 	cout << "Enter text to be converted! (word or several words)" << endl;
 	getline(cin, inData);
-
+	return;
 }
 
 void GenerateOutput(string AlphabetArray[], string inputStr)
@@ -96,7 +96,6 @@ void GenerateOutput(string AlphabetArray[], string inputStr)
 // Post: outputs letter loop on screen 
 {
 	char tempCH;
-	
 	cout << endl;
 
 	for (int counter = 0; counter < inputStr.length(); counter++)

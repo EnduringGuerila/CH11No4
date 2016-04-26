@@ -35,8 +35,6 @@ int main()
 
 	UberStructure Uber;
 
-	bool cont = false;
-
 	InitializeArray(Uber.AlphabetArray);
 
 	do {
